@@ -1,31 +1,49 @@
-// Add current date in format: Friday, December 5th, 2020
-
+// Render Date
+// ====================================================================
 const DateTime = luxon.DateTime;
 
 const now = DateTime.local().toFormat("DDDD");
-console.log(DateTime.local().hour);
 
 $("#currentDay").text(now);
 
-// From 6AM to 6PM, add a timeslot for each hour to #planner
-// Should be composed of a block containing the hour, a textarea, and a button to save changes
-
+// Render Timeslots
+// ====================================================================
 for (let i = 6; i < 19; i++) {
 	const timeslot = $("<div>");
 	const time = $("<div>");
-	const text = $("<div>");
+	const timeText = $("<p>");
+	const text = $("<textarea>");
 	const saveButton = $("<button>");
 
-	time.text(`${i}:00`).addClass("time-box");
-	text.addClass("text-box");
+	timeText.addClass("time-text").text(`${i}:00`);
+
+	time.attr("class", "time-box col-1").attr("data-time", i).append(timeText);
+
+	text.attr("class", "text-box col-10").text(localStorage.getItem(i));
 	if (DateTime.local().hour === i) {
 		text.addClass("present");
-	} else if (DateTime.local().hour < i) {
-		text.addClass("past");
 	} else if (DateTime.local().hour > i) {
+		text.addClass("past");
+	} else if (DateTime.local().hour < i) {
 		text.addClass("future");
 	}
-	saveButton.html('<i class="fas fa-save"></i>').addClass("save-button");
-	timeslot.addClass("timeslot").append(time).append(text).append(saveButton);
+	saveButton
+		.html('<i class="fas fa-save"></i>')
+		.attr("class", "save-button col-1");
+
+	timeslot
+		.attr("class", "timeslot row")
+		.append(time)
+		.append(text)
+		.append(saveButton);
+
 	$("#planner").append(timeslot);
 }
+
+// Save Text
+// ====================================================================
+$(".save-button").on("click", function () {
+	const text = this.parentElement.children[1].value;
+	const timeKey = this.parentElement.children[0].getAttribute("data-time");
+	localStorage.setItem(timeKey, text);
+});

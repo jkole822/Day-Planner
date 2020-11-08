@@ -1,18 +1,11 @@
+/* General Styling */
 body {
-	font-family: "Open Sans", sans-serif;
+	font-family: "Ubuntu", sans-serif;
 	font-size: 16px;
-	line-height: 1;
+	line-height: 1.5;
 }
 
-textarea {
-	background: transparent;
-	border: none;
-	resize: none;
-	color: #000000;
-	border-left: 1px solid black;
-	padding: 10px;
-}
-
+/* Jumbotron */
 .jumbotron {
 	text-align: center;
 	background-color: transparent;
@@ -21,67 +14,65 @@ textarea {
 	border-bottom: 10px solid black;
 }
 
-.description {
-	white-space: pre-wrap;
-}
-
-.time-block {
-	text-align: center;
-	border-radius: 15px;
-}
-
+/* Timeslots */
 .row {
-	white-space: pre-wrap;
-	height: 80px;
-	border-top: 1px solid white;
+	height: 5rem;
+	margin-bottom: 0.5rem;
 }
 
-.hour {
-	background-color: #ffffff;
-	color: #000000;
-	border-top: 1px dashed #000000;
+/* Timeslots: Time Area */
+.time-box {
+	display: relative;
+	background-color: #474747;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+.time-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #ffffff;
+}
+
+/* Timeslots: Text Area */
+.text-box {
+	border: none;
+	resize: none;
+	padding: 0.8rem;
+}
+
+.text-box:focus {
+	outline: none;
 }
 
 .past {
 	background-color: #d3d3d3;
-	color: white;
 }
 
 .present {
-	background-color: #ff6961;
+	background-color: #3aa5cf;
 	color: white;
+	font-weight: 700;
 }
 
 .future {
-	background-color: #77dd77;
+	background-color: #0062a3;
 	color: white;
 }
 
+/* Timeslots: Save Button */
 .save-button {
-	width: 20%;
-	border-left: 1px solid black;
+	font-size: 1.5rem;
+	border: none;
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 15px;
-	background-color: #06aed5;
+	background-color: #474747;
 	color: white;
 }
 
-.save-button i:hover {
-	font-size: 20px;
+.save-button:hover {
+	font-size: 2rem;
 	transition: all 0.3s ease-in-out;
-}
-
-.timeslot {
-	display: flex;
-	flex-direction: row;
-	width: 80vw;
-	height: 7.5vh;
-}
-
-.time-box {
-	width: 20%;
-}
-
-.text-box {
-	width: 60%;
 }
