@@ -24,11 +24,10 @@ body {
 .time-box {
 	display: relative;
 	background-color: #474747;
-	border-top-left-radius: 15px;
-	border-bottom-left-radius: 15px;
 }
 
 .time-text {
+	font-size: 0.7rem;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -64,15 +63,42 @@ body {
 
 /* Timeslots: Save Button */
 .save-button {
-	font-size: 1.5rem;
+	font-size: 1rem;
 	border: none;
-	border-top-right-radius: 15px;
-	border-bottom-right-radius: 15px;
 	background-color: #474747;
 	color: white;
 }
 
 .save-button:hover {
-	font-size: 2rem;
+	font-size: 1.25rem;
 	transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (min-width: 768px) {
+	.time-text {
+		font-size: 1rem;
+	}
+
+	/* Timeslots: Save Button */
+	.save-button {
+		font-size: 1.5rem;
+	}
+
+	.save-button:hover {
+		font-size: 2rem;
+	}
+}
+
+@media only screen and (min-width: 576px) {
+	/* Timeslots: Time Area */
+	.time-box {
+		border-top-left-radius: 15px;
+		border-bottom-left-radius: 15px;
+	}
+
+	/* Timeslots: Save Button */
+	.save-button {
+		border-top-right-radius: 15px;
+		border-bottom-right-radius: 15px;
+	}
 }
