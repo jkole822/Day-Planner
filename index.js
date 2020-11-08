@@ -59,11 +59,10 @@ for (let i = 6; i < 19; i++) {
 // Save Text
 // ====================================================================
 $(".save-button").on("click", function () {
-	// 'this' refers to the save button, so must go up one level to the parent (timeslot)
-	// and then select the textarea which is the second child to get the entered text
-	// as its value. The first child contains the data-attribute which is used as the key
-	// to store the aforementioned content as its value.
-	const text = this.parentElement.children[1].value;
-	const timeKey = this.parentElement.children[0].getAttribute("data-time");
+	// 'this' refers to the save button, so must traverse back one sibling to retrieve the value of the textarea.
+	// Then, must traverse back another sibling to retrieve the value of the data time attribute of the time container
+	// which will used as the key to store the value of the textarea to local storage.
+	const text = $(this).prev().val();
+	const timeKey = $(this).prev().prev().attr("data-time");
 	localStorage.setItem(timeKey, text);
 });
